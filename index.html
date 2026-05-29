@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ProFlare</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gflare-static.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,7 +15,7 @@
   --orange: #ff7a00;
   --amber: #ffb300;
   --bg: #080604;
-  --card: #0f0a07;
+  --flare-card: #0f0a07;
   --border: rgba(255,90,0,.15);
   --text: #f7ede3;
   --muted: rgba(247,237,227,.38);
@@ -28,11 +28,10 @@ body {
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
-  cursor: none;
+  flare-dot: none;
 }
 
-/* ── Custom cursor ── */
-.cursor {
+.flare-dot {
   position: fixed;
   width: 12px; height: 12px;
   background: var(--orange);
@@ -43,7 +42,7 @@ body {
   transition: width .2s, height .2s, background .2s;
   mix-blend-mode: screen;
 }
-.cursor-ring {
+.flare-ring {
   position: fixed;
   width: 36px; height: 36px;
   border: 1.5px solid rgba(255,122,0,.5);
@@ -53,11 +52,10 @@ body {
   transform: translate(-50%,-50%);
   transition: transform .12s ease, width .25s, height .25s;
 }
-body:has(.card:hover) .cursor { width: 20px; height: 20px; background: var(--amber); }
-body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
+body:has(.flare-card:hover) .flare-dot { width: 20px; height: 20px; background: var(--amber); }
+body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
 
-/* ── Background orbs ── */
-.bg-orbs {
+.flare-orbs {
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -69,18 +67,17 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   border-radius: 50%;
   filter: blur(120px);
   opacity: .45;
-  animation: orb-drift 12s ease-in-out infinite alternate;
+  animation: flare-drift 12s ease-in-out infinite alternate;
 }
 .orb1 { width: 600px; height: 600px; background: radial-gradient(circle, #ff2d00 0%, transparent 70%); top: -200px; left: -150px; animation-delay: 0s; }
 .orb2 { width: 500px; height: 500px; background: radial-gradient(circle, #ff7a00 0%, transparent 70%); bottom: 10%; right: -100px; animation-delay: -4s; }
 .orb3 { width: 350px; height: 350px; background: radial-gradient(circle, #ffb300 0%, transparent 70%); top: 40%; left: 30%; animation-delay: -8s; opacity: .2; }
-@keyframes orb-drift {
+@keyframes flare-drift {
   from { transform: translate(0,0) scale(1); }
   to   { transform: translate(40px, 30px) scale(1.08); }
 }
 
-/* Grain */
-.grain {
+.flare-noise {
   position: fixed;
   inset: -50%;
   width: 200%; height: 200%;
@@ -88,9 +85,9 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   pointer-events: none;
   z-index: 1;
   opacity: .035;
-  animation: grain-shift 0.15s steps(2) infinite;
+  animation: flare-flare-noise 0.15s steps(2) infinite;
 }
-@keyframes grain-shift {
+@keyframes flare-flare-noise {
   0%   { transform: translate(0,0); }
   25%  { transform: translate(-3%,-4%); }
   50%  { transform: translate(2%,3%); }
@@ -98,8 +95,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   100% { transform: translate(3%,-2%); }
 }
 
-/* ── Layout ── */
-.site {
+.pro-site {
   position: relative;
   z-index: 2;
   max-width: 740px;
@@ -107,8 +103,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   padding: 0 24px 120px;
 }
 
-/* ── Hero ── */
-.hero {
+.pro-line {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -116,7 +111,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   padding-top: 80px;
 }
 
-.hero-eyebrow {
+.pro-eyebrow {
   font-family: 'JetBrains Mono', monospace;
   font-size: .7rem;
   letter-spacing: .18em;
@@ -124,28 +119,28 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   color: var(--orange);
   margin-bottom: 32px;
   opacity: 0;
-  animation: rise .7s .1s cubic-bezier(.22,1,.36,1) forwards;
+  animation: pro-rise .7s .1s cubic-bezier(.22,1,.36,1) forwards;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.hero-eyebrow::before {
+.pro-eyebrow::before {
   content: '';
   display: block;
   width: 28px; height: 1px;
   background: var(--orange);
 }
 
-.hero-identity {
+.pro-identity {
   display: flex;
   align-items: center;
   gap: 22px;
   margin-bottom: 28px;
   opacity: 0;
-  animation: rise .7s .2s cubic-bezier(.22,1,.36,1) forwards;
+  animation: pro-rise .7s .2s cubic-bezier(.22,1,.36,1) forwards;
 }
 
-.hero-avatar {
+.pro-avatar {
   width: 72px; height: 72px;
   border-radius: 18px;
   object-fit: cover;
@@ -155,7 +150,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   background: linear-gradient(135deg, #ff2d00, #ff7a00);
 }
 
-.hero-name {
+.pro-name {
   font-family: 'Cabinet Grotesk', sans-serif;
   font-weight: 900;
   font-size: clamp(3rem, 9vw, 5.5rem);
@@ -167,7 +162,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   background-clip: text;
 }
 
-.hero-tagline {
+.pro-flare-tagline {
   font-family: 'Instrument Serif', serif;
   font-style: italic;
   font-size: clamp(1.1rem, 3vw, 1.5rem);
@@ -176,24 +171,24 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   max-width: 480px;
   margin-bottom: 48px;
   opacity: 0;
-  animation: rise .7s .35s cubic-bezier(.22,1,.36,1) forwards;
+  animation: pro-rise .7s .35s cubic-bezier(.22,1,.36,1) forwards;
 }
 
-.hero-tagline em {
+.pro-flare-tagline em {
   font-style: normal;
   color: var(--orange);
   -webkit-text-fill-color: var(--orange);
 }
 
-.hero-links {
+.pro-links {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
   opacity: 0;
-  animation: rise .7s .45s cubic-bezier(.22,1,.36,1) forwards;
+  animation: pro-rise .7s .45s cubic-bezier(.22,1,.36,1) forwards;
 }
 
-.btn {
+.pro-btn {
   font-family: 'JetBrains Mono', monospace;
   font-size: .75rem;
   letter-spacing: .08em;
@@ -202,20 +197,20 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   text-decoration: none;
   transition: all .2s;
 }
-.btn-primary {
+.pro-pro-btn-primary {
   background: linear-gradient(135deg, var(--red), var(--orange));
   color: #fff;
   box-shadow: 0 0 24px rgba(255,45,0,.4);
 }
-.btn-primary:hover { box-shadow: 0 0 40px rgba(255,45,0,.7); transform: translateY(-2px); }
-.btn-ghost {
+.pro-pro-btn-primary:hover { box-shadow: 0 0 40px rgba(255,45,0,.7); transform: translateY(-2px); }
+.pro-pro-btn-ghost {
   border: 1px solid var(--border);
   color: var(--muted);
   background: rgba(255,90,0,.05);
 }
-.btn-ghost:hover { border-color: rgba(255,122,0,.4); color: var(--text); }
+.pro-pro-btn-ghost:hover { border-color: rgba(255,122,0,.4); color: var(--text); }
 
-.scroll-hint {
+.flare-scroll {
   position: absolute;
   bottom: 40px;
   left: 50%;
@@ -225,67 +220,65 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   align-items: center;
   gap: 6px;
   opacity: 0;
-  animation: fadeIn .6s 1.2s forwards;
+  animation: proFadeIn .6s 1.2s forwards;
 }
-.scroll-hint span {
+.flare-scroll span {
   font-family: 'JetBrains Mono', monospace;
   font-size: .6rem;
   letter-spacing: .14em;
   color: rgba(255,122,0,.4);
   text-transform: uppercase;
 }
-.scroll-line {
+.flare-line {
   width: 1px;
   height: 40px;
   background: linear-gradient(to bottom, rgba(255,122,0,.5), transparent);
-  animation: scroll-pulse 2s ease-in-out infinite;
+  animation: flare-pulse 2s ease-in-out infinite;
 }
-@keyframes scroll-pulse {
+@keyframes flare-pulse {
   0%,100% { opacity: .3; transform: scaleY(1); }
   50% { opacity: 1; transform: scaleY(1.2); }
 }
 
-/* ── Section ── */
-.section {
+.pro-section {
   padding-top: 80px;
 }
 
-.section-header {
+.pro-pro-section-head {
   display: flex;
   align-items: baseline;
   gap: 16px;
   margin-bottom: 32px;
 }
-.section-title {
+.pro-pro-section-title {
   font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: -.01em;
   color: var(--text);
 }
-.section-line {
+.pro-pro-section-line {
   flex: 1;
   height: 1px;
   background: linear-gradient(to right, rgba(255,90,0,.3), transparent);
 }
-.section-count {
+.pro-pro-section-count {
   font-family: 'JetBrains Mono', monospace;
   font-size: .65rem;
   color: var(--orange);
   opacity: .6;
 }
 
-/* ── Cards ── */
-.cards {
+.flare-cards {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.card {
+.flare-card {
   display: block;
   text-decoration: none;
   color: inherit;
-  background: var(--card);
+  background: var(--flare-card);
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 24px 26px;
@@ -293,21 +286,20 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   overflow: hidden;
   transition: border-color .3s, transform .3s, box-shadow .3s;
 
-  /* scroll reveal */
+  
   opacity: 0;
   transform: translateY(32px);
 }
 
-.card.visible {
-  animation: card-in .6s cubic-bezier(.22,1,.36,1) forwards;
+.flare-card.flare-visible {
+  animation: flare-flare-in .6s cubic-bezier(.22,1,.36,1) forwards;
 }
 
-@keyframes card-in {
+@keyframes flare-flare-in {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* inner glow */
-.card::before {
+.flare-card::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -316,10 +308,9 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   opacity: 0;
   transition: opacity .35s;
 }
-.card:hover::before { opacity: 1; }
+.flare-card:hover::before { opacity: 1; }
 
-/* top shimmer */
-.card::after {
+.flare-card::after {
   content: '';
   position: absolute;
   top: 0; left: -100%; right: -100%;
@@ -327,22 +318,22 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   background: linear-gradient(90deg, transparent, rgba(255,122,0,.6), transparent);
   transition: left .5s;
 }
-.card:hover::after { left: 0; right: 0; }
+.flare-card:hover::after { left: 0; right: 0; }
 
-.card:hover {
+.flare-card:hover {
   border-color: rgba(255,122,0,.35);
   transform: translateY(-3px);
   box-shadow: 0 20px 60px rgba(255,45,0,.15), 0 0 0 1px rgba(255,122,0,.1);
 }
 
-.card-top {
+.flare-flare-card-top {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-bottom: 14px;
 }
 
-.card-icon {
+.flare-flare-card-icon {
   width: 48px; height: 48px;
   border-radius: 13px;
   background: rgba(255,45,0,.1);
@@ -354,16 +345,16 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   flex-shrink: 0;
   transition: background .3s, box-shadow .3s;
 }
-.card:hover .card-icon {
+.flare-card:hover .flare-flare-card-icon {
   background: rgba(255,45,0,.18);
   box-shadow: 0 0 20px rgba(255,45,0,.3);
 }
 
-.card-meta {
+.flare-flare-card-meta {
   flex: 1;
 }
 
-.card-title {
+.flare-flare-card-title {
   font-size: 1.1rem;
   font-weight: 800;
   letter-spacing: -.02em;
@@ -371,7 +362,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   color: var(--text);
 }
 
-.card-stack {
+.flare-flare-card-stack {
   font-family: 'JetBrains Mono', monospace;
   font-size: .64rem;
   color: var(--orange);
@@ -379,14 +370,14 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   letter-spacing: .05em;
 }
 
-.card-desc {
+.flare-flare-card-desc {
   font-size: .88rem;
   color: var(--muted);
   line-height: 1.65;
   font-weight: 400;
 }
 
-.card-footer {
+.flare-flare-card-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -395,12 +386,12 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   border-top: 1px solid rgba(255,90,0,.08);
 }
 
-.tags {
+.flare-flare-tags {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
 }
-.tag {
+.flare-tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: .6rem;
   padding: 3px 9px;
@@ -411,7 +402,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   letter-spacing: .04em;
 }
 
-.card-link {
+.flare-flare-card-link {
   font-family: 'JetBrains Mono', monospace;
   font-size: .65rem;
   color: rgba(255,122,0,.5);
@@ -420,12 +411,11 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   gap: 5px;
   transition: color .2s;
 }
-.card:hover .card-link { color: var(--orange); }
-.card-link svg { transition: transform .2s; }
-.card:hover .card-link svg { transform: translate(2px,-2px); }
+.flare-card:hover .flare-flare-card-link { color: var(--orange); }
+.flare-flare-card-link svg { transition: transform .2s; }
+.flare-card:hover .flare-flare-card-link svg { transform: translate(2px,-2px); }
 
-/* ── About strip ── */
-.about-strip {
+.pro-about {
   margin-top: 80px;
   padding: 36px;
   border-radius: 24px;
@@ -437,10 +427,10 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   transform: translateY(32px);
   transition: none;
 }
-.about-strip.visible {
-  animation: card-in .6s cubic-bezier(.22,1,.36,1) forwards;
+.pro-about.flare-visible {
+  animation: flare-flare-in .6s cubic-bezier(.22,1,.36,1) forwards;
 }
-.about-strip::before {
+.pro-about::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -448,7 +438,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   background: linear-gradient(90deg, var(--red), var(--orange), transparent);
 }
 
-.about-label {
+.pro-about-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: .65rem;
   letter-spacing: .14em;
@@ -457,7 +447,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   margin-bottom: 12px;
 }
 
-.about-text {
+.pro-about-text {
   font-family: 'Instrument Serif', serif;
   font-style: italic;
   font-size: 1.3rem;
@@ -465,22 +455,21 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   color: rgba(247,237,227,.7);
 }
 
-.about-text strong {
+.pro-about-text strong {
   font-style: normal;
   font-weight: 400;
   color: var(--text);
 }
 
-/* ── Stat row ── */
-.stats {
+.flare-flare-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin-top: 80px;
 }
 
-.stat {
-  background: var(--card);
+.flare-stat {
+  background: var(--flare-card);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 22px 20px;
@@ -488,10 +477,10 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   opacity: 0;
   transform: translateY(24px);
 }
-.stat.visible {
-  animation: card-in .5s cubic-bezier(.22,1,.36,1) forwards;
+.flare-stat.flare-visible {
+  animation: flare-flare-in .5s cubic-bezier(.22,1,.36,1) forwards;
 }
-.stat-num {
+.flare-flare-stat-num {
   font-size: 2rem;
   font-weight: 900;
   letter-spacing: -.04em;
@@ -501,7 +490,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   background-clip: text;
   line-height: 1;
 }
-.stat-label {
+.flare-flare-stat-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: .6rem;
   color: var(--muted);
@@ -510,8 +499,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   text-transform: uppercase;
 }
 
-/* ── Footer ── */
-.site-footer {
+.pro-footer {
   margin-top: 100px;
   padding-top: 32px;
   border-top: 1px solid rgba(255,90,0,.08);
@@ -521,7 +509,7 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   flex-wrap: wrap;
   gap: 12px;
 }
-.footer-name {
+.pro-footer-name {
   font-weight: 800;
   font-size: .85rem;
   background: linear-gradient(90deg, var(--orange), var(--amber));
@@ -529,23 +517,21 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.footer-copy {
+.pro-footer-copy {
   font-family: 'JetBrains Mono', monospace;
   font-size: .62rem;
   color: rgba(247,237,227,.2);
   letter-spacing: .06em;
 }
 
-/* ── Keyframes ── */
-@keyframes rise {
+@keyframes pro-rise {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes fadeIn {
+@keyframes proFadeIn {
   to { opacity: 1; }
 }
 
-/* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: rgba(255,122,0,.3); border-radius: 4px; }
@@ -553,229 +539,229 @@ body:has(.card:hover) .cursor-ring { width: 52px; height: 52px; }
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursor-ring"></div>
+<div class="flare-dot" id="flare-dot"></div>
+<div class="flare-ring" id="flare-ring"></div>
 
-<div class="bg-orbs">
+<div class="flare-orbs">
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
   <div class="orb orb3"></div>
 </div>
-<div class="grain"></div>
+<div class="flare-noise"></div>
 
-<div class="site">
+<div class="pro-site">
 
-  <!-- ── HERO ── -->
-  <section class="hero" style="position:relative;">
+  
+  <pro-section class="pro-line" style="position:relative;">
 
-    <div class="hero-eyebrow">portfolio</div>
+    <div class="pro-eyebrow">portfolio</div>
 
-    <div class="hero-identity">
-      <img class="hero-avatar" src="https://ProFlare.pages.dev/icon.png" alt="ProFlare"
+    <div class="pro-identity">
+      <img class="pro-avatar" src="https://ProFlare.pages.dev/icon.png" alt="ProFlare"
         onerror="this.style.display='none'">
-      <h1 class="hero-name">ProFlare</h1>
+      <h1 class="pro-name">ProFlare</h1>
     </div>
 
-    <p class="hero-tagline">
+    <p class="pro-flare-tagline">
       Building <em>mods, plugins, backends</em> and&nbsp;tools —<br>
       one obsessive project at a time.
     </p>
 
-    <div class="hero-links">
-      <a class="btn btn-primary" href="https://ProFlare.pages.dev" target="_blank">Visit Portfolio ↗</a>
-      <a class="btn btn-ghost" href="https://github.com/darkflareplays8" target="_blank">GitHub</a>
-      <a class="btn btn-ghost" href="https://modrinth.com" target="_blank">Modrinth</a>
+    <div class="pro-links">
+      <a class="pro-btn pro-pro-btn-primary" href="https://ProFlare.pages.dev" target="_blank">Visit Portfolio ↗</a>
+      <a class="pro-btn pro-pro-btn-ghost" href="https://github.com/darkflareplays8" target="_blank">GitHub</a>
+      <a class="pro-btn pro-pro-btn-ghost" href="https://modrinth.com" target="_blank">Modrinth</a>
     </div>
 
-    <div class="scroll-hint">
+    <div class="flare-scroll">
       <span>scroll</span>
-      <div class="scroll-line"></div>
+      <div class="flare-line"></div>
     </div>
 
-  </section>
+  </pro-section>
 
-  <!-- ── STATS ── -->
-  <div class="stats">
-    <div class="stat reveal">
-      <div class="stat-num">6+</div>
-      <div class="stat-label">Active Projects</div>
+  
+  <div class="flare-flare-stats">
+    <div class="flare-stat flare-reveal">
+      <div class="flare-flare-stat-num">6+</div>
+      <div class="flare-flare-stat-label">Active Projects</div>
     </div>
-    <div class="stat reveal">
-      <div class="stat-num">MC</div>
-      <div class="stat-label">26.1.2 Fabric</div>
+    <div class="flare-stat flare-reveal">
+      <div class="flare-flare-stat-num">MC</div>
+      <div class="flare-flare-stat-label">26.1.2 Fabric</div>
     </div>
-    <div class="stat reveal">
-      <div class="stat-num">∞</div>
-      <div class="stat-label">Hours Spent</div>
+    <div class="flare-stat flare-reveal">
+      <div class="flare-flare-stat-num">∞</div>
+      <div class="flare-flare-stat-label">Hours Spent</div>
     </div>
   </div>
 
-  <!-- ── SECTION ONE ── -->
-  <section class="section">
-    <div class="section-header">
-      <span class="section-title">Section Title</span>
-      <div class="section-line"></div>
-      <span class="section-count">03</span>
+  
+  <pro-section class="pro-section">
+    <div class="pro-pro-section-head">
+      <span class="pro-pro-section-title">Section Title</span>
+      <div class="pro-pro-section-line"></div>
+      <span class="pro-pro-section-count">03</span>
     </div>
 
-    <div class="cards">
+    <div class="flare-cards">
 
-      <a class="card reveal" href="#" target="_blank">
-        <div class="card-top">
-          <div class="card-icon">🔥</div>
-          <div class="card-meta">
-            <div class="card-title">Project Title</div>
-            <div class="card-stack">lorem ipsum · dolor sit</div>
+      <a class="flare-card flare-reveal" href="#" target="_blank">
+        <div class="flare-flare-card-top">
+          <div class="flare-flare-card-icon">🔥</div>
+          <div class="flare-flare-card-meta">
+            <div class="flare-flare-card-title">Project Title</div>
+            <div class="flare-flare-card-stack">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff· tuff tuff</div>
           </div>
         </div>
-        <p class="card-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
+        <p class="flare-flare-card-desc">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff</p>
+        <div class="flare-flare-card-foot">
+          <div class="flare-flare-tags">
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
           </div>
-          <span class="card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          <span class="flare-flare-card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
         </div>
       </a>
 
-      <a class="card reveal" href="#" target="_blank">
-        <div class="card-top">
-          <div class="card-icon">⚡</div>
-          <div class="card-meta">
-            <div class="card-title">Project Title</div>
-            <div class="card-stack">lorem ipsum · dolor sit</div>
+      <a class="flare-card flare-reveal" href="#" target="_blank">
+        <div class="flare-flare-card-top">
+          <div class="flare-flare-card-icon">⚡</div>
+          <div class="flare-flare-card-meta">
+            <div class="flare-flare-card-title">Project Title</div>
+            <div class="flare-flare-card-stack">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff· tuff tuff</div>
           </div>
         </div>
-        <p class="card-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
+        <p class="flare-flare-card-desc">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff</p>
+        <div class="flare-flare-card-foot">
+          <div class="flare-flare-tags">
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
           </div>
-          <span class="card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-        </div>
-      </a>
-
-      <a class="card reveal" href="#" target="_blank">
-        <div class="card-top">
-          <div class="card-icon">🛠️</div>
-          <div class="card-meta">
-            <div class="card-title">Project Title</div>
-            <div class="card-stack">lorem ipsum · dolor sit</div>
-          </div>
-        </div>
-        <p class="card-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
-          </div>
-          <span class="card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          <span class="flare-flare-card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
         </div>
       </a>
 
-    </div>
-  </section>
-
-  <!-- ── SECTION TWO ── -->
-  <section class="section">
-    <div class="section-header">
-      <span class="section-title">Section Title</span>
-      <div class="section-line"></div>
-      <span class="section-count">03</span>
-    </div>
-
-    <div class="cards">
-
-      <a class="card reveal" href="#" target="_blank">
-        <div class="card-top">
-          <div class="card-icon">🌐</div>
-          <div class="card-meta">
-            <div class="card-title">Project Title</div>
-            <div class="card-stack">lorem ipsum · dolor sit</div>
+      <a class="flare-card flare-reveal" href="#" target="_blank">
+        <div class="flare-flare-card-top">
+          <div class="flare-flare-card-icon">🛠️</div>
+          <div class="flare-flare-card-meta">
+            <div class="flare-flare-card-title">Project Title</div>
+            <div class="flare-flare-card-stack">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff· tuff tuff</div>
           </div>
         </div>
-        <p class="card-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
+        <p class="flare-flare-card-desc">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff</p>
+        <div class="flare-flare-card-foot">
+          <div class="flare-flare-tags">
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
           </div>
-          <span class="card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-        </div>
-      </a>
-
-      <a class="card reveal" href="#" target="_blank">
-        <div class="card-top">
-          <div class="card-icon">📱</div>
-          <div class="card-meta">
-            <div class="card-title">Project Title</div>
-            <div class="card-stack">lorem ipsum · dolor sit</div>
-          </div>
-        </div>
-        <p class="card-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
-          </div>
-          <span class="card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-        </div>
-      </a>
-
-      <a class="card reveal" href="#" target="_blank">
-        <div class="card-top">
-          <div class="card-icon">🖥️</div>
-          <div class="card-meta">
-            <div class="card-title">Project Title</div>
-            <div class="card-stack">lorem ipsum · dolor sit</div>
-          </div>
-        </div>
-        <p class="card-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
-            <span class="tag">Tag</span>
-          </div>
-          <span class="card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          <span class="flare-flare-card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
         </div>
       </a>
 
     </div>
-  </section>
+  </pro-section>
 
-  <!-- ── ABOUT ── -->
-  <div class="about-strip reveal">
-    <div class="about-label">// about</div>
-    <p class="about-text">
-      Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit, sed do eiusmod tempor incididunt ut labore et <strong>dolore magna aliqua</strong>. Ut enim ad minim veniam, quis <strong>nostrud exercitation</strong>.
+  
+  <pro-section class="pro-section">
+    <div class="pro-pro-section-head">
+      <span class="pro-pro-section-title">Section Title</span>
+      <div class="pro-pro-section-line"></div>
+      <span class="pro-pro-section-count">03</span>
+    </div>
+
+    <div class="flare-cards">
+
+      <a class="flare-card flare-reveal" href="#" target="_blank">
+        <div class="flare-flare-card-top">
+          <div class="flare-flare-card-icon">🌐</div>
+          <div class="flare-flare-card-meta">
+            <div class="flare-flare-card-title">Project Title</div>
+            <div class="flare-flare-card-stack">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff· tuff tuff</div>
+          </div>
+        </div>
+        <p class="flare-flare-card-desc">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff</p>
+        <div class="flare-flare-card-foot">
+          <div class="flare-flare-tags">
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
+          </div>
+          <span class="flare-flare-card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="flare-card flare-reveal" href="#" target="_blank">
+        <div class="flare-flare-card-top">
+          <div class="flare-flare-card-icon">📱</div>
+          <div class="flare-flare-card-meta">
+            <div class="flare-flare-card-title">Project Title</div>
+            <div class="flare-flare-card-stack">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff· tuff tuff</div>
+          </div>
+        </div>
+        <p class="flare-flare-card-desc">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff</p>
+        <div class="flare-flare-card-foot">
+          <div class="flare-flare-tags">
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
+          </div>
+          <span class="flare-flare-card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="flare-card flare-reveal" href="#" target="_blank">
+        <div class="flare-flare-card-top">
+          <div class="flare-flare-card-icon">🖥️</div>
+          <div class="flare-flare-card-meta">
+            <div class="flare-flare-card-title">Project Title</div>
+            <div class="flare-flare-card-stack">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff· tuff tuff</div>
+          </div>
+        </div>
+        <p class="flare-flare-card-desc">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff</p>
+        <div class="flare-flare-card-foot">
+          <div class="flare-flare-tags">
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
+            <span class="flare-tag">Tag</span>
+          </div>
+          <span class="flare-flare-card-link">view <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+  </pro-section>
+
+  
+  <div class="pro-about flare-reveal">
+    <div class="pro-about-label">
+    <p class="pro-about-text">
+      tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff <strong>tuff tuff</strong> tuff tuff tuff tuff tuff tuff tuff tuff et <strong>tuff tuff tuff</strong> tuff tuff tuff tuff tuff quis <strong>tuff tuff</strong>.
     </p>
   </div>
 
-  <!-- ── FOOTER ── -->
-  <footer class="site-footer">
-    <span class="footer-name">ProFlare</span>
-    <span class="footer-copy">proflare.pages.dev · lorem ipsum</span>
+  
+  <footer class="pro-footer">
+    <span class="pro-footer-name">ProFlare</span>
+    <span class="pro-footer-copy">proflare.pages.dev · tuff tuff tuff</span>
   </footer>
 
 </div>
 
 <script>
-// Custom cursor
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
+
+const flare-dot = document.getElementById('flare-dot');
+const ring = document.getElementById('flare-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
 
 document.addEventListener('mousemove', e => {
   mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px';
-  cursor.style.top  = my + 'px';
+  flare-dot.style.left = mx + 'px';
+  flare-dot.style.top  = my + 'px';
 });
 
 function animRing() {
@@ -787,26 +773,24 @@ function animRing() {
 }
 animRing();
 
-// Scroll reveal
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
+const flare-reveals = document.querySelectorAll('.flare-reveal');
+const io = new Interpro-sectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      setTimeout(() => entry.target.classList.add('flare-visible'), i * 80);
       io.unobserve(entry.target);
     }
   });
 }, { threshold: 0.12 });
 
-reveals.forEach(el => io.observe(el));
+flare-reveals.forEach(el => io.observe(el));
 
-// Stagger siblings
-document.querySelectorAll('.cards').forEach(grid => {
-  [...grid.querySelectorAll('.card')].forEach((card, i) => {
-    card.style.animationDelay = (i * 0.09) + 's';
+document.querySelectorAll('.flare-cards').forEach(grid => {
+  [...grid.querySelectorAll('.flare-card')].forEach((flare-card, i) => {
+    flare-card.style.animationDelay = (i * 0.09) + 's';
   });
 });
-document.querySelectorAll('.stats .stat').forEach((s, i) => {
+document.querySelectorAll('.flare-flare-stats .flare-stat').forEach((s, i) => {
   s.style.animationDelay = (i * 0.1) + 's';
 });
 </script>

@@ -219,7 +219,7 @@
             <div class="flare-card-stack">github.com · darkflareplays8</div>
           </div>
         </div>
-    <p class="flare-card-desc">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff</p>
+    <p class="flare-card-desc">All my open source projects, experiments and repos. Where most of the code actually lives.</p>
         <div class="flare-card-foot">
       <div class="flare-tags">
             <span class="flare-tag">Open Source</span>
@@ -239,7 +239,7 @@
               <div class="flare-card-stack">modrinth.com · proflarestudios</div>
           </div>
       </div>
-          <p class="flare-card-desc">tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff tuff</p>
+          <p class="flare-card-desc">ProFlare Studios on Modrinth. Home to published Fabric mods including AutoTotem+ with <span id="modrinth-downloads">70k+</span> downloads.</p>
       <div class="flare-card-foot">
             <div class="flare-tags">
         <span class="flare-tag">Mods</span>
@@ -267,6 +267,16 @@
 </div>
 
 <script>
+fetch('https://api.modrinth.com/v2/project/uWKQfxMw')
+  .then(r => r.json())
+  .then(d => {
+    if (d.downloads) {
+      const k = d.downloads >= 1000 ? (d.downloads / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : d.downloads;
+      document.getElementById('modrinth-downloads').textContent = k + '+';
+    }
+  })
+  .catch(() => {});
+
 const flareDot = document.getElementById('flare-dot');
 const flareRing = document.getElementById('flare-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;

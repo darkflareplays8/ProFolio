@@ -153,8 +153,9 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
 }
 
 .pro-flare-tagline {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
+  font-family: 'Space Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 300;
   font-size: clamp(1.1rem, 3vw, 1.5rem);
   color: var(--muted);
   line-height: 1.5;
@@ -165,6 +166,7 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
 }
 .pro-flare-tagline em {
   font-style: normal;
+  font-weight: 500;
   color: var(--orange);
   -webkit-text-fill-color: var(--orange);
 }
@@ -431,8 +433,9 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
 }
 
 .pro-about-text {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
+  font-family: 'Space Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 300;
   font-size: 1.3rem;
   line-height: 1.6;
   color: rgba(247,237,227,.7);

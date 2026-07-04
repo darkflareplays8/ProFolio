@@ -5,7 +5,7 @@
   --orange: #ff7a00;
   --amber: #ffb300;
   --bg: #080604;
-  --flare-card: #0f0a07;
+  --card-bg: #0f0a07;
   --border: rgba(255,90,0,.15);
   --text: #f7ede3;
   --muted: rgba(247,237,227,.38);
@@ -15,56 +15,12 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Cabinet Grotesk', sans-serif;
-  background: var(--bg);
+  background: radial-gradient(circle at 20% 10%, rgba(255,45,0,.10), transparent 55%),
+              radial-gradient(circle at 85% 55%, rgba(255,122,0,.08), transparent 55%),
+              radial-gradient(circle at 35% 85%, rgba(255,179,0,.05), transparent 50%),
+              var(--bg);
   color: var(--text);
   overflow-x: hidden;
-  cursor: none;
-}
-
-.flare-dot {
-  position: fixed;
-  width: 12px; height: 12px;
-  background: var(--orange);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: width .2s, height .2s, background .2s;
-  mix-blend-mode: screen;
-}
-.flare-ring {
-  position: fixed;
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(255,122,0,.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: transform .12s ease, width .25s, height .25s;
-}
-body:has(.flare-card:hover) .flare-dot { width: 20px; height: 20px; background: var(--amber); }
-body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
-
-.flare-orbs {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: .45;
-  animation: flare-drift 12s ease-in-out infinite alternate;
-}
-.orb1 { width: 600px; height: 600px; background: radial-gradient(circle, #ff2d00 0%, transparent 70%); top: -200px; left: -150px; animation-delay: 0s; }
-.orb2 { width: 500px; height: 500px; background: radial-gradient(circle, #ff7a00 0%, transparent 70%); bottom: 10%; right: -100px; animation-delay: -4s; }
-.orb3 { width: 350px; height: 350px; background: radial-gradient(circle, #ffb300 0%, transparent 70%); top: 40%; left: 30%; animation-delay: -8s; opacity: .2; }
-@keyframes flare-drift {
-  from { transform: translate(0,0) scale(1); }
-  to   { transform: translate(40px, 30px) scale(1.08); }
 }
 
 .flare-noise {
@@ -231,45 +187,39 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
   50% { opacity: 1; transform: scaleY(1.2); }
 }
 
-.pro-section {
+.section {
   padding-top: 80px;
 }
 
-.pro-section-head {
+.section-header {
   display: flex;
   align-items: baseline;
   gap: 16px;
   margin-bottom: 32px;
 }
-.pro-section-title {
+.section-title {
   font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: -.01em;
   color: var(--text);
 }
-.pro-section-line {
+.section-line {
   flex: 1;
   height: 1px;
   background: linear-gradient(to right, rgba(255,90,0,.3), transparent);
 }
-.pro-section-count {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .65rem;
-  color: var(--orange);
-  opacity: .6;
-}
 
-.flare-cards {
+.card-grid {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.flare-card {
+.card {
   display: block;
   text-decoration: none;
   color: inherit;
-  background: var(--flare-card);
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 24px 26px;
@@ -279,14 +229,14 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
   opacity: 0;
   transform: translateY(32px);
 }
-.flare-card.flare-visible {
+.card.flare-visible {
   animation: flare-in .6s cubic-bezier(.22,1,.36,1) forwards;
 }
 @keyframes flare-in {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.flare-card::before {
+.card::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -295,9 +245,9 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
   opacity: 0;
   transition: opacity .35s;
 }
-.flare-card:hover::before { opacity: 1; }
+.card:hover::before { opacity: 1; }
 
-.flare-card::after {
+.card::after {
   content: '';
   position: absolute;
   top: 0; left: -100%; right: -100%;
@@ -305,22 +255,22 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
   background: linear-gradient(90deg, transparent, rgba(255,122,0,.6), transparent);
   transition: left .5s;
 }
-.flare-card:hover::after { left: 0; right: 0; }
+.card:hover::after { left: 0; right: 0; }
 
-.flare-card:hover {
+.card:hover {
   border-color: rgba(255,122,0,.35);
   transform: translateY(-3px);
   box-shadow: 0 20px 60px rgba(255,45,0,.15), 0 0 0 1px rgba(255,122,0,.1);
 }
 
-.flare-card-top {
+.card-top {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-bottom: 14px;
 }
 
-.flare-card-icon {
+.card-icon {
   width: 48px; height: 48px;
   border-radius: 13px;
   background: rgba(255,45,0,.1);
@@ -332,14 +282,14 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
   flex-shrink: 0;
   transition: background .3s, box-shadow .3s;
 }
-.flare-card:hover .flare-card-icon {
+.card:hover .card-icon {
   background: rgba(255,45,0,.18);
   box-shadow: 0 0 20px rgba(255,45,0,.3);
 }
 
-.flare-card-meta { flex: 1; }
+.card-meta { flex: 1; }
 
-.flare-card-title {
+.card-title {
   font-size: 1.1rem;
   font-weight: 800;
   letter-spacing: -.02em;
@@ -347,7 +297,7 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
   color: var(--text);
 }
 
-.flare-card-stack {
+.card-stack {
   font-family: 'JetBrains Mono', monospace;
   font-size: .64rem;
   color: var(--orange);
@@ -355,14 +305,14 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
   letter-spacing: .05em;
 }
 
-.flare-card-desc {
+.card-desc {
   font-size: .88rem;
   color: var(--muted);
   line-height: 1.65;
   font-weight: 400;
 }
 
-.flare-card-foot {
+.card-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -387,7 +337,7 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
   letter-spacing: .04em;
 }
 
-.flare-card-link {
+.card-link {
   font-family: 'JetBrains Mono', monospace;
   font-size: .65rem;
   color: rgba(255,122,0,.5);
@@ -396,9 +346,9 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
   gap: 5px;
   transition: color .2s;
 }
-.flare-card:hover .flare-card-link { color: var(--orange); }
-.flare-card-link svg { transition: transform .2s; }
-.flare-card:hover .flare-card-link svg { transform: translate(2px,-2px); }
+.card:hover .card-link { color: var(--orange); }
+.card-link svg { transition: transform .2s; }
+.card:hover .card-link svg { transform: translate(2px,-2px); }
 
 .pro-about {
   margin-top: 80px;
@@ -410,7 +360,6 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
   overflow: hidden;
   opacity: 0;
   transform: translateY(32px);
-  transition: none;
 }
 .pro-about.flare-visible {
   animation: flare-in .6s cubic-bezier(.22,1,.36,1) forwards;
@@ -444,44 +393,6 @@ body:has(.flare-card:hover) .flare-ring { width: 52px; height: 52px; }
   font-style: normal;
   font-weight: 400;
   color: var(--text);
-}
-
-.flare-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 80px;
-}
-
-.flare-stat {
-  background: var(--flare-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 22px 20px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(24px);
-}
-.flare-stat.flare-visible {
-  animation: flare-in .5s cubic-bezier(.22,1,.36,1) forwards;
-}
-.flare-stat-num {
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: -.04em;
-  background: linear-gradient(135deg, var(--orange), var(--amber));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-}
-.flare-stat-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: .6rem;
-  color: var(--muted);
-  margin-top: 6px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
 }
 
 .pro-footer {

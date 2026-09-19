@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #080604;
+  --bg-raised: #0d0906;
+  --line: rgba(247, 237, 227, 0.1);
+  --line-strong: rgba(247, 237, 227, 0.18);
+  --ink: #f7ede3;
+  --ink-dim: rgba(247, 237, 227, 0.5);
+  --ink-faint: rgba(247, 237, 227, 0.28);
+
+  --red: #ff2d00;
+  --orange: #ff7a00;
+  --amber: #ffb300;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-ink-faint: var(--ink-faint);
+
+  --color-red: var(--red);
+  --color-orange: var(--orange);
+  --color-amber: var(--amber);
+
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+::selection {
+  background: rgba(255, 122, 0, 0.3);
+  color: var(--ink);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 2px;
+}
+
+.gutter {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3.25rem;
+  border-right: 1px solid var(--line);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 55px,
+    var(--line) 55px,
+    var(--line) 56px
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+

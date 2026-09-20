@@ -38,16 +38,16 @@ export default async function BlogPage() {
             <Link
               key={post.id}
               href={`/blog/${post.slug}`}
-              className="group grid grid-cols-[1fr_auto] gap-x-6 gap-y-1 items-baseline py-4 pl-4 border-l-2 border-line-strong hover:border-orange hover:bg-bg-raised transition-colors -ml-4"
+              className="group block rounded-lg p-4 mb-3 border border-line-strong border-l-[3px] border-l-orange bg-bg-raised/30 transition-colors md:grid md:grid-cols-[1fr_auto] md:items-baseline md:gap-x-6 md:gap-y-1 md:rounded-none md:p-0 md:py-4 md:pl-4 md:mb-0 md:border-0 md:border-l-2 md:border-l-line-strong md:-ml-4 md:bg-transparent hover:border-orange md:hover:border-l-orange md:hover:bg-bg-raised"
             >
               <p className="font-medium text-ink group-hover:text-amber transition-colors">
                 {post.title}
               </p>
-              <p className="font-mono text-xs text-ink-faint whitespace-nowrap">
+              <p className="font-mono text-xs text-ink-faint mt-1 md:mt-0 md:whitespace-nowrap">
                 {formatDate(post.published_at)}
               </p>
               {post.tags && (
-                <p className="font-mono text-xs text-ink-faint col-span-2">
+                <p className="font-mono text-xs text-ink-faint mt-2 md:mt-0 md:col-span-2">
                   {post.tags
                     .split(",")
                     .map((t) => t.trim())

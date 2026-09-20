@@ -91,9 +91,9 @@ export const projects: Project[] = [
   {
     slug: "frog-linux",
     name: "Frog Linux",
-    tagline: "Custom Arch-based Linux distro",
+    tagline: "Custom Arch-based Linux distro — contributor, not the original creator",
     description:
-      "A custom Arch-based Linux distribution, including a WebKitGTK/Tauri compatibility layer and fixes to the Calamares installer around display manager setup, SDDM enablement, and live-session account permissions.",
+      "A custom Arch-based Linux distribution. I'm a contributor on this project, not the original creator — my work includes a WebKitGTK/Tauri compatibility layer and fixes to the Calamares installer around display manager setup, SDDM enablement, and live-session account permissions.",
     tags: ["Linux", "Arch", "Shell"],
     links: [
       { label: "GitHub", url: "https://github.com/Crazy10061/Frog-Linux" },
@@ -107,6 +107,17 @@ export const projects: Project[] = [
       "A single-file Cloudflare Worker pastebin with no build step, storing pastes in Backblaze B2's free S3-compatible tier via a hand-rolled Web-Crypto-only SigV4 signer. Includes a live byte counter, configurable TTL, a modal save popup, light/dark mode, and an hourly cron job that lazily deletes expired pastes.",
     tags: ["Cloudflare Workers", "TypeScript", "Backblaze B2"],
     links: [{ label: "Visit", url: "https://paste.proflare.dev" }],
+  },
+  {
+    slug: "profolio",
+    name: "ProFlare Studios (portfolio)",
+    tagline: "This site — a multi-page portfolio and blog built on Cloudflare Workers",
+    description:
+      "The portfolio you are looking at — a Next.js app on Cloudflare Workers made through the OpenNext adapter, with blogs and dynamic fetching. A D1 database stores blogs, with auto publishing to Discord. It uses APIs, like Modrinth's, and uses Next.js revalidation to keep everything up-to-date!",
+    tags: ["Next.js", "Cloudflare Workers", "D1"],
+    links: [
+      { label: "GitHub", url: "https://github.com/darkflareplays8/ProFolio" },
+    ],
   },
 ];
 

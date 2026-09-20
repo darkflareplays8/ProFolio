@@ -57,16 +57,21 @@ export default function SiteHeader() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 -mr-2"
+          className="md:hidden flex flex-col justify-center items-center gap-[5px] w-6 h-8 -mr-2"
         >
           <span
-            className={`block h-px bg-ink transition-transform ${
-              open ? "translate-y-[3.5px] rotate-45" : ""
+            className={`block h-px w-5 bg-ink transition-transform ${
+              open ? "translate-y-[6px] rotate-45" : ""
             }`}
           />
           <span
-            className={`block h-px bg-ink transition-transform ${
-              open ? "-translate-y-[3.5px] -rotate-45" : ""
+            className={`block h-px w-5 bg-ink transition-opacity ${
+              open ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`block h-px w-5 bg-ink transition-transform ${
+              open ? "-translate-y-[6px] -rotate-45" : ""
             }`}
           />
         </button>

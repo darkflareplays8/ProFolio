@@ -7,5 +7,12 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "profolio-db",
+      "database_id": "dafdf994-3c4f-410a-948b-52e4ad21fdfe"
+    }
+  ]
 }

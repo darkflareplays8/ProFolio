@@ -8,7 +8,7 @@ export async function getModrinthDownloads(projectId?: string) {
       }
     );
     if (!res.ok) return null;
-    const data = await res.json();
+    const data = (await res.json()) as { downloads?: number };
     if (typeof data.downloads !== "number") return null;
     const downloads = data.downloads as number;
     return downloads >= 1000

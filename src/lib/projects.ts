@@ -31,12 +31,12 @@ export const projects: Project[] = [
   {
     slug: "autototem-plus",
     name: "AutoTotem+",
-    tagline: "Fabric mod for automatic totem equipping, 70k+ downloads",
+    tagline: "Fabric mod for automatic totem equipping, 140k+ downloads",
     description:
       "A Fabric mod that automatically swaps a Totem of Undying into your offhand when it's empty, using a tick-spread state machine that mirrors vanilla's own slot-swap packets so the server never flags it as suspicious. Rebuilt around a proper IDLE → SWAP_IN → EQUIP → RESTORE state machine to fix ghost-totem and infinite-hotbar-cycle bugs from earlier versions, with correct inventory-to-container slot index mapping and full server-side sync for the offhand equip.",
     tags: ["Fabric", "Java", "Minecraft"],
     featured: true,
-    stats: [{ label: "Downloads", value: "70k+" }],
+    stats: [{ label: "Downloads", value: "140k+" }],
     modrinthProjectId: "uWKQfxMw",
     links: [
       { label: "Modrinth", url: "https://modrinth.com/mod/autototem-plus" },

@@ -23,14 +23,14 @@ export const metadata: Metadata = {
     template: "%s — ProFlare",
   },
   description:
-    "ProFlare — Minecraft Fabric mod developer and Paper plugin developer. Creator of AutoTotem+ (70k+ downloads) and other open-source Minecraft tools.",
+    "ProFlare — Minecraft Fabric mod developer and Paper plugin developer. Creator of AutoTotem+ (140k+ downloads) and other open-source Minecraft tools.",
   icons: {
     icon: "/icons/icon.png",
   },
   openGraph: {
     title: "ProFlare — Minecraft Mod & Plugin Developer",
     description:
-      "Minecraft Fabric mod developer and Paper plugin developer. Creator of AutoTotem+ (70k+ downloads) and other open-source Minecraft tools.",
+      "Minecraft Fabric mod developer and Paper plugin developer. Creator of AutoTotem+ (140k+ downloads) and other open-source Minecraft tools.",
     url: "https://proflare.dev",
     siteName: "ProFlare",
     type: "website",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "ProFlare — Minecraft Mod & Plugin Developer",
     description:
-      "Minecraft Fabric mod developer and Paper plugin developer. Creator of AutoTotem+ (70k+ downloads) and other open-source Minecraft tools.",
+      "Minecraft Fabric mod developer and Paper plugin developer. Creator of AutoTotem+ (140k+ downloads) and other open-source Minecraft tools.",
     images: ["/icons/icon.png"],
   },
 };

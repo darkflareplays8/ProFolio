@@ -56,9 +56,26 @@ export default function AboutPage() {
       </div>
 
       <h2 className="text-sm font-medium text-ink-dim mb-4">Stack</h2>
-      <p className="font-mono text-sm text-ink-dim">
+      <p className="font-mono text-sm text-ink-dim mb-14">
         {stack.join(" / ")}
       </p>
+
+      <h2 className="text-sm font-medium text-ink-dim mb-4">
+        GitHub activity
+      </h2>
+      <a
+        href="https://github.com/darkflareplays8"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block rounded-lg border border-line-strong overflow-hidden hover:border-orange/40 transition-colors"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://streak-stats.demolab.com?user=darkflareplays8&hide_border=true&background=080604&stroke=3a2e26&ring=ff7a00&fire=ff2d00&currStreakNum=f7ede3&sideNums=f7ede3&currStreakLabel=ffb300&sideLabels=b3a89c&dates=8a7d72"
+          alt="darkflareplays8's GitHub streak stats"
+          className="w-full"
+        />
+      </a>
     </div>
   );
 }

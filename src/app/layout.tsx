@@ -27,6 +27,13 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icons/icon.png",
   },
+  verification: {
+    google: "wRcFS0Aef6Hkev_JAqzA3yhrQGuCixdfU4WLbVjgcGA",
+    other: {
+      "gridinsoft-key":
+        "6ckp4kssshveds2b7n2aj6on6rrz6jzvtoaacra2s7z26gdhher6q5phxn9627kk",
+    },
+  },
   openGraph: {
     title: "ProFlare — Minecraft Mod & Plugin Developer",
     description:

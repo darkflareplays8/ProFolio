@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description: "Who ProFlare is and what ProFlare Studios works on.",
-};
+  path: "/about",
+});
 
 const stack = ["Java", "Rust", "TypeScript", "Node.js", "Kotlin", "Swift"];
 

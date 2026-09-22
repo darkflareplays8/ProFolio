@@ -1,8 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { projects } from "@/lib/projects";
 import ProjectCard from "@/components/ProjectCard";
 import { getModrinthDownloads } from "@/lib/modrinth";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "ProFlare — Minecraft Mod & Plugin Developer",
+  description:
+    "Minecraft Fabric mod and Paper plugin developer. Creator of AutoTotem+ and other open-source tools, plus small Cloudflare-native projects.",
+  path: "/",
+  absoluteTitle: true,
+});
+
 
 export default async function Home() {
   const featured = projects.slice(0, 4);
@@ -35,8 +46,8 @@ export default async function Home() {
 
         <p className="text-lg text-ink-dim leading-relaxed max-w-md mb-10">
           I build Fabric mods, Paper plugins, and small Cloudflare-native
-          tools — usually solving problems that only show up once something
-          is under real load.
+          tools — most of it started as something I needed for my own
+          servers and ended up worth sharing.
         </p>
 
         <dl className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-8 gap-y-3 border-y border-line py-5">

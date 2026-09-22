@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getDiscordServerInfo } from "@/lib/discord";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description: "Get in touch with ProFlare.",
-};
+  path: "/contact",
+});
 
 const DISCORD_INVITE = "https://discord.gg/swWnUpUhtT";
 

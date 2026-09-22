@@ -33,7 +33,7 @@ export const projects: Project[] = [
     name: "AutoTotem+",
     tagline: "Fabric mod for automatic totem equipping, 140k+ downloads",
     description:
-      "A Fabric mod that automatically swaps a Totem of Undying into your offhand when it's empty, using a tick-spread state machine that mirrors vanilla's own slot-swap packets so the server never flags it as suspicious. Rebuilt around a proper IDLE → SWAP_IN → EQUIP → RESTORE state machine to fix ghost-totem and infinite-hotbar-cycle bugs from earlier versions, with correct inventory-to-container slot index mapping and full server-side sync for the offhand equip.",
+      "Keeps a Totem of Undying in your offhand at all times, swapping one in automatically the moment it breaks. The tricky part was doing this without the server flagging it as cheating — it mirrors vanilla's own slot-swap packets instead of teleporting the item in, so anti-cheat plugins see nothing unusual. Earlier versions had a nasty ghost-totem bug and could get stuck cycling your hotbar forever. I rewrote the whole thing around a proper state machine (IDLE → SWAP_IN → EQUIP → RESTORE) with correct slot index mapping, which fixed both issues for good.",
     tags: ["Fabric", "Java", "Minecraft"],
     featured: true,
     stats: [{ label: "Downloads", value: "140k+" }],
@@ -59,7 +59,7 @@ export const projects: Project[] = [
     name: "Simple Server Transfer",
     tagline: "Paper/Folia plugin using the vanilla Transfer packet",
     description:
-      "A lightweight Paper/Folia plugin that moves players between servers using Minecraft's own vanilla Transfer packet instead of a proxy-based hop, keeping the transition clean and dependency-free.",
+      "Moves players between servers using Minecraft's own vanilla Transfer packet, so there's no proxy hop or extra dependency involved — just a clean handoff on Paper or Folia.",
     tags: ["Paper", "Folia", "Java"],
     links: [
       { label: "Modrinth", url: "https://modrinth.com/plugin/simple-server-transfer" },
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     name: "ascii-stream",
     tagline: "CLI for streaming video and GIFs as ASCII art in the terminal",
     description:
-      "A published npm package that streams video or GIF input straight into your terminal as live ASCII art, built on top of ffmpeg-static for frame extraction and decoding.",
+      "Streams video or GIFs into your terminal as live ASCII art. It's built on ffmpeg-static for the actual frame extraction and decoding, so it works anywhere Node does.",
     tags: ["Node.js", "CLI", "npm"],
     links: [
       { label: "npm i -g ascii-stream", url: "https://www.npmjs.com/package/ascii-stream" },
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     name: "sigv4-lite",
     tagline: "Minimal AWS SigV4 signer built on Web Crypto only",
     description:
-      "A minimal AWS SigV4 request signer with zero dependencies, using only the Web Crypto API so it runs natively on Cloudflare Workers, Deno, Bun, and in the browser. The signing approach was originally hand-rolled for paste.proflare.dev and later extracted into its own package.",
+      "A zero-dependency AWS SigV4 signer that only uses the Web Crypto API, so it runs natively on Cloudflare Workers, Deno, Bun, or straight in the browser. I originally hand-rolled the signing logic for paste.proflare.dev, then pulled it out into its own package once it was clear other projects would need the same thing.",
     tags: ["TypeScript", "Cloudflare Workers", "npm"],
     links: [
       { label: "npm i sigv4-lite", url: "https://www.npmjs.com/package/sigv4-lite" },
@@ -93,7 +93,7 @@ export const projects: Project[] = [
     name: "Frog Linux",
     tagline: "Custom Arch-based Linux distro — contributor, not the original creator",
     description:
-      "A custom Arch-based Linux distribution. I'm a contributor on this project, not the original creator — my work includes a WebKitGTK/Tauri compatibility layer and fixes to the Calamares installer around display manager setup, SDDM enablement, and live-session account permissions.",
+      "A custom Arch-based Linux distro. I'm a contributor here, not the original creator — my work has mainly been a WebKitGTK/Tauri compatibility layer, plus fixing a handful of Calamares installer issues: a missing display manager module, SDDM not enabling properly after install, and the live session keeping sudo access it shouldn't have.",
     tags: ["Linux", "Arch", "Shell"],
     links: [
       { label: "GitHub", url: "https://github.com/Crazy10061/Frog-Linux" },
@@ -104,7 +104,7 @@ export const projects: Project[] = [
     name: "paste.proflare.dev",
     tagline: "Cloudflare Worker pastebin backed by Backblaze B2",
     description:
-      "A single-file Cloudflare Worker pastebin with no build step, storing pastes in Backblaze B2's free S3-compatible tier via a hand-rolled Web-Crypto-only SigV4 signer. Includes a live byte counter, configurable TTL, a modal save popup, light/dark mode, and an hourly cron job that lazily deletes expired pastes.",
+      "A pastebin that's just one Cloudflare Worker file — no build step, no framework. Pastes get stored in Backblaze B2's free tier, signed with a SigV4 implementation I hand-rolled using only Web Crypto. It's got the basics you'd expect: a live byte counter, configurable expiry, light/dark mode, and an hourly cron job that quietly cleans up anything that's expired.",
     tags: ["Cloudflare Workers", "TypeScript", "Backblaze B2"],
     links: [{ label: "Visit", url: "https://paste.proflare.dev" }],
   },
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     name: "ProFlare Studios (portfolio)",
     tagline: "This site — a multi-page portfolio and blog built on Cloudflare Workers",
     description:
-      "The portfolio you are looking at — a Next.js app on Cloudflare Workers made through the OpenNext adapter, with blogs and dynamic fetching. A D1 database stores blogs, with auto publishing to Discord. It uses APIs, like Modrinth's, and uses Next.js revalidation to keep everything up-to-date!",
+      "The site you're on right now. It's a Next.js app running on Cloudflare Workers via the OpenNext adapter, with a D1 database backing the blog and an admin panel for writing posts. New posts auto-announce in Discord, and the download stats on these project pages pull live from the Modrinth API instead of sitting there as stale numbers.",
     tags: ["Next.js", "Cloudflare Workers", "D1"],
     links: [
       { label: "GitHub", url: "https://github.com/darkflareplays8/ProFolio" },

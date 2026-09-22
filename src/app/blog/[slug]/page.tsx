@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getPublishedPostBySlug } from "@/lib/posts";
+import { excerptFromMarkdown, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -15,9 +16,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPublishedPostBySlug(slug);
   if (!post) return {};
-  return {
+  return pageMetadata({
     title: post.title,
-  };
+    description: excerptFromMarkdown(post.content),
+    path: `/blog/${post.slug}`,
+  });
 }
 
 function formatDate(iso: string | null) {

@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { listPublishedPosts } from "@/lib/posts";
+import { pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Blog",
   description: "Devlog and writeups from ProFlare.",
-};
+  path: "/blog",
+});
 
 function formatDate(iso: string | null) {
   if (!iso) return "";

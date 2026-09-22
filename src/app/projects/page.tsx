@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { projects } from "@/lib/projects";
 import ProjectCard from "@/components/ProjectCard";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Projects",
   description:
     "Fabric mods, Paper plugins, and Cloudflare-native tools built by ProFlare.",
-};
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (

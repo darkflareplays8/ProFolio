@@ -1,10 +1,15 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { getAdminSession } from "@/lib/auth";
 import { listAllPosts } from "@/lib/posts";
 import AdminPostRow from "@/components/AdminPostRow";
 
 export const dynamic = "force-dynamic";
 
+export const metadata: Metadata = {
+  title: "Admin",
+  robots: { index: false, follow: false },
+};
 
 export default async function AdminPage({
   searchParams,

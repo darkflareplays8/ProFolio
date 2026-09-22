@@ -1,9 +1,14 @@
 import { redirect } from "next/navigation";
+import type { Metadata } from "next";
 import { getAdminSession } from "@/lib/auth";
 import PostForm from "@/components/PostForm";
 
 export const dynamic = "force-dynamic";
 
+export const metadata: Metadata = {
+  title: "New Post",
+  robots: { index: false, follow: false },
+};
 
 export default async function NewPostPage() {
   const session = await getAdminSession();

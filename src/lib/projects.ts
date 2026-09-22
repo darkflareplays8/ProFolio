@@ -39,7 +39,7 @@ export const projects: Project[] = [
     stats: [{ label: "Downloads", value: "140k+" }],
     modrinthProjectId: "uWKQfxMw",
     links: [
-      { label: "Modrinth", url: "https://modrinth.com/mod/autototem-plus" },
+      { label: "Modrinth", url: "https://modrinth.com/project/uWKQfxMw" },
     ],
     changelog: [
       {
